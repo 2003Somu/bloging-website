@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
 const methodOverride = require('method-override');
@@ -9,7 +11,7 @@ const connectDB = require("./server/config/db");
 const { isActiveRoute } = require('./server/helpers/routeHelpers');
 
 const app = express();
-const port = 5454;
+const port = 5000 || process.env.PORT;
 
 //Connect to DB
 
@@ -25,7 +27,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   store: MongoStore.create({ 
-    mongoUrl: "mongodb+srv://rajputsom47:MtFNJQNWhMnE2vKu@cluster0.j9ujaem.mongodb.net/blog"
+    mongoUrl: process.env.MONGODB_URI 
   }),
   //cookie:{maxAge: new Date (Date.now() + (3600000) )}
 }));
