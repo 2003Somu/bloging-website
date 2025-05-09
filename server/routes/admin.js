@@ -278,4 +278,9 @@ router.get('/logout', (req, res) => {
   
 });
 
+app.get('/contact', (req, res) => {
+  res.render('contact');
+});
+
+
 module.exports = router;
